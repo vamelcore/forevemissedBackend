@@ -12,12 +12,15 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::get('/roles', [\App\Http\Controllers\Api\V1\RoleController::class, 'getList'])
-    ->name('roles.getList');
 
+Route::get('/roles/list', [\App\Http\Controllers\Api\V1\RoleController::class, 'list'])
+    ->name('roles.list');
 
-Route::any('/', function() {
-    return response()->json([
-        'message' => 'REST API V1'
-    ]);
+Route::post('/invitation/process', [\App\Http\Controllers\Api\V1\InvitationController::class, 'process'])
+    ->name('invitation.process');
+
+Route::fallback(function (){
+   return response()->json([
+       'message' => 'Available routes: GET /roles/list and POST /invitation/process'
+   ]);
 });
