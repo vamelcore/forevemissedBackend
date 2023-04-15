@@ -2,11 +2,12 @@
 
 namespace App\Service;
 
+use App\Contracts\RoleInterface;
 use App\Http\Resources\RoleResource;
 use App\Models\Role;
 use Illuminate\Support\Facades\Cache;
 
-class RoleService
+class RoleService implements RoleInterface
 {
     public function list()
     {
