@@ -16,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::fallback(function(){
     return response()->json([
-        'message' => 'This is test API'
-    ]);
+        'message' => 'Resource not found'
+    ], 404);
 });
