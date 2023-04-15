@@ -23,6 +23,7 @@ class InvitationRequest extends FormRequest
     {
         return [
             'data' => ['required', 'array'],
+            'data.*' => ['required_with:data', 'required', 'array:name,email,role'],
             'data.*.name' => ['required', 'string', 'min:2'],
             'data.*.email' => ['required', 'email:rfc,dns'],
             'data.*.role' => ['required', 'string', 'exists:App\Models\Role,name']

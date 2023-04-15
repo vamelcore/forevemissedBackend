@@ -65,7 +65,7 @@ class InvitationApiTest extends TestCase
         $response = $this->json('post', '/api/v1/invitation/process', $data);
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
         $response->assertJsonValidationErrors([
-            "data.name.name"
+            "data.name"
         ]);
     }
 
