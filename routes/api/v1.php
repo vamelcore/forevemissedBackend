@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::fallback(function(){
+Route::any('/', function() {
     return response()->json([
-        'message' => 'Resource not found'
-    ], 404);
+        'message' => 'Hello world'
+    ]);
 });

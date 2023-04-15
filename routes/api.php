@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::fallback(function(){
+Route::any('/', function() {
     return response()->json([
-        'message' => 'This is test API'
+        'message' => 'REST API current version v1. Please use URL '.config('app.url').'/api/v1 for your requests'
     ]);
 });
