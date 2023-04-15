@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Cache;
 
 class RoleService
 {
-    public function getList()
+    public function list()
     {
         return RoleResource::collection(Cache::remember(
             'roles',

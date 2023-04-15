@@ -13,8 +13,8 @@ class RoleController extends Controller
     {
     }
 
-    public function getList()
+    public function list()
     {
-        return $this->service->getList();
+        return $this->service->list();
     }
 }
