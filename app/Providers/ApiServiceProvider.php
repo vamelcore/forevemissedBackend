@@ -2,10 +2,6 @@
 
 namespace App\Providers;
 
-use App\Contracts\InvitationInterface;
-use App\Contracts\RoleInterface;
-use App\Service\InvitationService;
-use App\Service\RoleService;
 use Illuminate\Support\ServiceProvider;
 
 class ApiServiceProvider extends ServiceProvider
@@ -15,8 +11,18 @@ class ApiServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(RoleInterface::class, RoleService::class);
-        $this->app->bind(InvitationInterface::class, InvitationService::class);
+        $this->app->bind(
+            \App\Contracts\RoleInterface::class,
+            \App\Service\RoleService::class
+        );
+        $this->app->bind(
+            \App\Contracts\InvitationInterface::class,
+            \App\Service\InvitationService::class
+        );
+        $this->app->bind(
+            \App\Contracts\InvitationMailInterface::class,
+            \App\Service\InvitationMailService\InvitationMailToFileService::class
+        );
     }
 
     /**
