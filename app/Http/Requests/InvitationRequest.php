@@ -22,9 +22,9 @@ class InvitationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'data.*.name' => ['required','string'],
-            'data.*.email' => ['required','email:rfc,dns'],
-            'data.*.role' => ['required','string', 'exists:App\Models\Role,name']
+            '*.name' => ['required','string'],
+            '*.email' => ['required','email:rfc,dns'],
+            '*.role' => ['required','string', 'exists:App\Models\Role,name']
         ];
     }
 }
