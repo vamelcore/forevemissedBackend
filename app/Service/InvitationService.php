@@ -18,7 +18,7 @@ class InvitationService implements InvitationInterface
     {
         $recipients = $request->validated();
 
-        foreach ($recipients as $recipient) {
+        foreach ($recipients['data'] as $recipient) {
             $dto = new InvitationMailDTO();
             $dto->setEmail($recipient['email']);
             $dto->setName($recipient['name']);
