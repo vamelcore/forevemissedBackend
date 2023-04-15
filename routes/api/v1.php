@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +12,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::get('/roles', [\App\Http\Controllers\Api\V1\RoleController::class, 'getList'])
+    ->name('roles.getList');
+
 
 Route::any('/', function() {
     return response()->json([
-        'message' => 'Hello world'
+        'message' => 'REST API V1'
     ]);
 });
