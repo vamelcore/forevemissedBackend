@@ -84,6 +84,10 @@ return [
                 'log',
             ],
         ],
+        'file' => [
+            'transport' => 'log',
+            'channel' => 'mail',
+        ],
     ],
 
     /*
