@@ -31,7 +31,7 @@ class InvitationApiTest extends TestCase
         ];
 
         $response = $this->json('post', '/api/v1/invitation/process', $data);
-        $response->assertStatus(Response::HTTP_OK);
+        $response->assertStatus(Response::HTTP_CREATED);
         $response->assertJson([
             'success' => true
         ]);

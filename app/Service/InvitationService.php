@@ -6,6 +6,7 @@ use App\Contracts\InvitationInterface;
 use App\Contracts\InvitationMailInterface;
 use App\DTOs\InvitationMailDTO;
 use App\Http\Requests\InvitationRequest;
+use Illuminate\Http\Response;
 
 class InvitationService implements InvitationInterface
 {
@@ -28,6 +29,6 @@ class InvitationService implements InvitationInterface
 
         return response()->json([
             'success' => true
-        ]);
+        ], Response::HTTP_CREATED);
     }
 }
