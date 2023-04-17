@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Response;
+use App\Http\Resources\ErrorNotFoundResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::any('/', function() {
-    return response()->json([
-        'message' => 'REST API current version v1. Please use URL '.config('app.url').'/api/v1 for your requests'
-    ]);
+    return (new ErrorNotFoundResource(null))
+        ->response()
+        ->setStatusCode(Response::HTTP_NOT_FOUND);
 });

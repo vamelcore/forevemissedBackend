@@ -9,15 +9,6 @@ use Tests\TestCase;
 
 class InvitationApiTest extends TestCase
 {
-    public function test_bad_link_response():void
-    {
-        $response = $this->json('get','/api/v1/invitation');
-        $response->assertStatus(Response::HTTP_OK);
-        $response->assertJson([
-            'message' => 'Available routes: GET /roles/list and POST /invitation/process'
-        ]);
-    }
-
     public function test_success_response(): void
     {
         $data = [

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
+use Illuminate\Http\Response;
+use App\Http\Resources\ErrorNotFoundResource;
 
 class Handler extends ExceptionHandler
 {
@@ -49,11 +51,12 @@ class Handler extends ExceptionHandler
         $this->renderable(function (Throwable $e, $request) {
             if ($request->is('api/*')) {
                 if ($e instanceof NotFoundHttpException || $e instanceof ModelNotFoundException) {
-                    return response()->json([
-                        'message' => 'Not found'
-                    ], 404);
+                    return (new ErrorNotFoundResource(null))
+                        ->response()
+                        ->setStatusCode(Response::HTTP_NOT_FOUND);
                 }
             }
+
             return null;
         });
     }

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Response;
+use App\Http\Resources\ErrorNotFoundResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +22,7 @@ Route::post('/invitation/process', [\App\Http\Controllers\Api\V1\InvitationContr
     ->name('invitation.process');
 
 Route::fallback(function (){
-   return response()->json([
-       'message' => 'Available routes: GET /roles/list and POST /invitation/process'
-   ]);
+    return (new ErrorNotFoundResource(null))
+        ->response()
+        ->setStatusCode(Response::HTTP_NOT_FOUND);
 });
